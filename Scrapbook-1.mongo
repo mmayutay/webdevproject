@@ -1,0 +1,1 @@
+db.Persons.find({})
