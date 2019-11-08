@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import SimpleDashBoard from './SimpleDashBoard';
 
-class AskNickname extends Component {
-    constructor(props) {
+
+class AskNickname extends Component{
+    constructor(props){
         super(props);
         this.state = {
             nickname: "",
@@ -10,28 +11,28 @@ class AskNickname extends Component {
         }
     }
 
-    nickname(e) {
-        this.setState({ nickname: e.target.value })
+    nickname(e){
+        this.setState({nickname: e.target.value})
     }
 
-    situationHandler(e) {
-        this.setState({ state: true })
+    situationHandler(e){
+        this.setState({state: true})
     }
 
-    render() {
+    render(){
 
-        if (this.state.state === false) {
-            return (
-                <center id="central">
-                    <br /><br /><br />
+        if(this.state.state === false){
+            return(
+                <center>
+                    <br/><br/><br/>
                     <h1>May I ask your Nickname?</h1>
                     <input placeholder="Enter your nickname" onChange={(e) => this.nickname(e)}></input>
                     <br></br>
                     <button onClick={(e) => this.situationHandler(e)}>Click</button>
                 </center>
             )
-        } else {
-            return (
+        }else{
+            return(
                 <SimpleDashBoard name={this.state.nickname}></SimpleDashBoard>
             )
         }

@@ -1,6 +1,6 @@
 
 #tablewrap {
-    background-color: burlywood;
+    background-color: grey;
     width: 530px;
     height: 500px;
     float: right;
@@ -8,12 +8,12 @@
 }
 
 #locationAsk {
-    background-color: burlywood;
+    background-color: blueviolet;
     float: left;
     width: 662px;
     height: 280px;
     text-align: center;
-    margin-right: 50px;
+    margin-left: 25px;
 }
 #locator {
     margin-top: 38px;
@@ -31,30 +31,14 @@ input:focus {
     background-color: lightblue;
 }
 
-#central {
-    background-color: burlywood;
-    width: 430px;
-    height: 271px;
+tripGuide {
+    margin-top: 38px;
 }
-button {
-    border-radius: 12px;
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
+tripGuideAsk {
+    background-color: blueviolet;
+    float: left;
+    width: 662px;
+    height: 280px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-}
-
-button:hover {
-    background-color: #e7e7e7;
+    margin-left: 25px;
 }
