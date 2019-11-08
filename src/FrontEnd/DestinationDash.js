@@ -11,10 +11,10 @@ class DestinationDash extends Component {
             location: "",
             situation: false,
             destined: false,
-            routes: ["13C", "62C", "13B", "62B"],
+            routes: ["04C", "04I", "04H", "17C", "17B", "17D"],
             jeepneys: "",
             setUpRoute: "",
-            places: ['Talamban', 'Gov. M. Cuenco Ave.', 'Gaisano Grand Mall (talamban)', 'University of San Carlos (talamban)', 'Banilad', 'Banilad Town Center', 'Gaisano Country Mall', 'University of Cebu (Banilad)', 'Paradise Village', 'Cebu Country Club', 'Samantabhadra Institute', 'Arch. Reyes Ave.', 'BIR', 'Cebu Business Park', 'Pag-ibig Fund', 'Ayala Center Cebu', 'Mindanao Ave.', 'Samar Loop', 'Luzon Ave.', 'Tune Hotels', 'Arch. Reyes Ave.', 'Hotel Elizabeth', 'Gorordo Ave.', 'Asilo dela Melagrosa', 'Camp Sutero (Cebu City Police office)', 'Gen. Echavez St.', 'Sikatuna St.', 'Parian', 'Colon St.', 'Gaisano Main', 'University of the Visayas', 'Colonnade Supermarket.']
+            places: ["Apas", "IT Park", "Salinas Drive", "University Of The Southern Philippines Foundation (Lahug)", "JY Square Mall", "Gorordo Ave.", "Lahug High School", "University Of The Philippines", "Golden Peak Hotel", "Philhealth", "Royal Concourse", "Asilo Dela Milagrosa", "Gen. Maxilom Ave.", "Mango Ave.", "Fooda Saversmart", "Horizons 101", "Mango Square", "The Beat", "Robinsons Fuente", "F. Ramos St.", "Junquera St.", "University Of San Carlos Main", "Sanciangko St.", "University Of Cebu Main", "GV Tower", "E Mall", "Panganiban St.", "Magallanes St.", "University Of San Jose-Recoletos", "Carbon Public Market", "F. Calderon St."," Progresso St."]
         }
     }
 
