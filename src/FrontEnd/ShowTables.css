@@ -2,18 +2,20 @@
 #tablewrap {
     background-color: grey;
     width: 530px;
-    height: 500px;
+    height: 200px;
     float: right;
-    margin-right: 100px;
+    margin-right: 50px;
+    border-radius: 25px;
 }
 
 #locationAsk {
     background-color: blueviolet;
     float: left;
     width: 662px;
-    height: 280px;
+    height: 310px;
     text-align: center;
-    margin-left: 25px;
+    margin-left: 50px;
+    border-radius: 25px;
 }
 #locator {
     margin-top: 38px;
@@ -22,7 +24,7 @@
 input {
     width: 400px;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 8px 20px;
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
@@ -31,10 +33,10 @@ input:focus {
     background-color: lightblue;
 }
 
-tripGuide {
+#tripGuide {
     margin-top: 38px;
 }
-tripGuideAsk {
+#tripGuideAsk {
     background-color: blueviolet;
     float: left;
     width: 662px;
@@ -42,3 +44,46 @@ tripGuideAsk {
     text-align: center;
     margin-left: 25px;
 }
+
+#nickname {
+    height: 390px;
+    background-color: dimgray;
+    border-radius: 25px;
+}
+
+#clarify {
+    border-radius: 25px;
+    float: right;
+    background-color: gray;
+    margin-right: 50px;
+    width: 530px;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: cursive;
+}
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+  }
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+

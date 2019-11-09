@@ -71,7 +71,7 @@ class SimpleDashBoard extends Component {
     diplayValues(e) {
         const values = this.state.routes;
         let jeep = ""
-        values.forEach(element => { 
+        values.forEach(element => {
             jeep += element + ", ";
         });
         this.setState({ jeepneys: jeep + " are the Jeepneys that will pass to " + this.state.location })
@@ -90,16 +90,14 @@ class SimpleDashBoard extends Component {
         e.preventDefault()
         this.setState({ changeDes: true })
     }
-    exposedCampaignOnChange = (e, {value}) => {
+    exposedCampaignOnChange = (e, { value }) => {
         e.persist();
-        console.log(e.target.textContent);
-        this.setState({location: e.target.textContent})
-      }
+        this.setState({ location: e.target.textContent })
+    }
 
     DropdownExampleClearableMultiple = () => (
         <Dropdown
             clearable
-            search
             selection
             options={this.state.countryOptions}
             placeholder='Location'
@@ -117,12 +115,14 @@ class SimpleDashBoard extends Component {
                             {this.DropdownExampleClearableMultiple()}<br></br>
                             {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
                             <button onClick={(e) => this.diplayValues(e)}>Click</button>
-                            
+
                         </div>
                         <div id="tablewrap">
                             <center>
-                                <h1>{this.state.jeepneys}</h1>
+                                <h1 id="display">{this.state.jeepneys}</h1>
                             </center>
+                        </div>
+                        <div id="clarify">
                             <input onChange={(e) => this.routeHandler(e)}></input>
                             {this.ModalExampleShorthand()}<br></br><br></br>
                             <center>

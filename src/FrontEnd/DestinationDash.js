@@ -79,20 +79,19 @@ class DestinationDash extends Component {
         this.setState({ setUpRoute: e.target.value })
     }
 
-    destinationHandler(e){
-        this.setState({destined: true})
+    destinationHandler(e) {
+        this.setState({ destined: true })
     }
 
-    exposedCampaignOnChange = (e, {value}) => {
+    exposedCampaignOnChange = (e, { value }) => {
         e.persist();
         console.log(e.target.textContent);
-        this.setState({location: e.target.textContent})
-      }
+        this.setState({ location: e.target.textContent })
+    }
 
-      DropdownExampleClearableMultiple = () => (
+    DropdownExampleClearableMultiple = () => (
         <Dropdown
             clearable
-            search
             selection
             options={this.state.countryOptions}
             placeholder='Location'
@@ -100,28 +99,35 @@ class DestinationDash extends Component {
         />
     )
 
-    render() {  
-        if(!this.state.destined){
-        return (
-            <div><br /><br /><br /><br />
-                <div id="locationAsk">
-                    <h1 id="locator">Hello! {this.props.name}, Can you please enter your Destination?</h1><br />
-                    {this.DropdownExampleClearableMultiple()}<br></br>
-                    {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
-                    <button onClick={(e) => this.diplayValues(e)}>Click</button>
+    render() {
+        if (!this.state.destined) {
+            return (
+                <div><br /><br /><br /><br />
+                    <div id="locationAsk">
+                        <h1 id="locator">Hello! {this.props.name}, Can you please enter your Destination?</h1><br />
+                        {this.DropdownExampleClearableMultiple()}<br></br>
+                        {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
+                        <button onClick={(e) => this.diplayValues(e)}>Click</button>
+                    </div>
+                    <div id="tablewrap">
+                        <center>
+                            <h1>{this.state.jeepneys}</h1>
+                        </center>
+                    </div>
+                    <div id="clarify">
+                        <input onChange={(e) => this.routeHandler(e)}></input>
+                        {this.ModalExampleShorthand()}<br></br><br></br>
+                        <center>
+                            <h1>Have you seen your Destination??</h1>
+                            <button onClick={(e) => this.destinationHandler(e)}>Yes</button>
+                            <button>No</button>
+                        </center>
+                    </div>
                 </div>
-                <div id="tablewrap">
-                    <center>
-                        <h1>{this.state.jeepneys}</h1>
-                    </center>
-                    <input onChange={(e) => this.routeHandler(e)}></input>
-                    {this.ModalExampleShorthand()}
-                </div>
-            </div>
-        )
-        }else{
-            return(
-            <Destination name={this.props.name}></Destination>
+            )
+        } else {
+            return (
+                <Destination name={this.props.name}></Destination>
             )
         }
     }

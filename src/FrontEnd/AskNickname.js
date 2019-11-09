@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SimpleDashBoard from './SimpleDashBoard';
+import swal from 'sweetalert';
 
 
 class AskNickname extends Component{
@@ -16,14 +17,19 @@ class AskNickname extends Component{
     }
 
     situationHandler(e){
-        this.setState({state: true})
+        if(this.state.nickname === ""){
+            this.setState({state: false})
+            swal("Awww Snap!", "The Nickname is required!", "error");
+        }else{
+            this.setState({state: true})
+        }
     }
 
     render(){
 
         if(this.state.state === false){
             return(
-                <center>
+                <center id="nickname">
                     <br/><br/><br/>
                     <h1>May I ask your Nickname?</h1>
                     <input placeholder="Enter your nickname" onChange={(e) => this.nickname(e)}></input>
