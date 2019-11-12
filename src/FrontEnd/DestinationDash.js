@@ -102,26 +102,28 @@ class DestinationDash extends Component {
     render() {
         if (!this.state.destined) {
             return (
-                <div><br /><br /><br /><br />
+                <div>
                     <div id="locationAsk">
-                        <h1 id="locator">Hello! {this.props.name}, Can you please enter your Destination?</h1><br />
+                        <h1 id="locator">Hello! <b>{this.props.name}</b>, Can you please enter your Destination?<b>(Barangay)</b></h1><br />
                         {this.DropdownExampleClearableMultiple()}<br></br>
                         {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
                         <button onClick={(e) => this.diplayValues(e)}>Click</button>
                     </div>
-                    <div id="tablewrap">
-                        <center>
-                            <h1>{this.state.jeepneys}</h1>
-                        </center>
-                    </div>
-                    <div id="clarify">
-                        <input onChange={(e) => this.routeHandler(e)}></input>
-                        {this.ModalExampleShorthand()}<br></br><br></br>
-                        <center>
-                            <h1>Have you seen your Destination??</h1>
-                            <button onClick={(e) => this.destinationHandler(e)}>Yes</button>
-                            <button>No</button>
-                        </center>
+                    <div id="flex-container">
+                        <div id="tablewrap">
+                            <center>
+                                <h1>{this.state.jeepneys}</h1>
+                            </center>
+                        </div>
+                        <div id="clarify">
+                            <input onChange={(e) => this.routeHandler(e)}></input>
+                            <center>{this.ModalExampleShorthand()}<br></br><br></br></center>
+                            <center>
+                                <h1>Have you seen your Destination??</h1>
+                                <button onClick={(e) => this.destinationHandler(e)}>Yes</button>
+                                <button>No</button>
+                            </center>
+                        </div>
                     </div>
                 </div>
             )

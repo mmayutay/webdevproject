@@ -13,7 +13,7 @@ class Destination extends Component {
         return (
         <center>
             <div id="tripGuideAsk">
-                <h1 id="tripGuide">Hello! {this.props.name}, have a nice trip and have a good day!!</h1><br />
+                <h1 id="tripGuide">Hello! {this.props.name}, Thank you for using our application and enjoy your ride!</h1><br />
             </div>
         </center>
         )

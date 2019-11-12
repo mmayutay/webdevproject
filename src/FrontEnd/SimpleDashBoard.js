@@ -4,6 +4,7 @@ import { Button, Modal } from 'semantic-ui-react';
 import Destination from './Destination';
 import DestinationDash from './DestinationDash';
 import { Dropdown } from 'semantic-ui-react'
+import swal from 'sweetalert';
 
 
 class SimpleDashBoard extends Component {
@@ -109,27 +110,28 @@ class SimpleDashBoard extends Component {
         if (!this.state.changeDes) {
             if (!this.state.destined) {
                 return (
-                    <div><br /><br /><br /><br />
+                    <div>
                         <div id="locationAsk">
-                            <h1 id="locator">Hello! {this.props.name}, Can you please enter your Location?</h1><br />
+                            <h1 id="locator">Hello! <b>{this.props.name}</b>, Can you please enter your Location?<b>(Barangay)</b></h1><br />
                             {this.DropdownExampleClearableMultiple()}<br></br>
                             {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
                             <button onClick={(e) => this.diplayValues(e)}>Click</button>
-
                         </div>
-                        <div id="tablewrap">
-                            <center>
-                                <h1 id="display">{this.state.jeepneys}</h1>
-                            </center>
-                        </div>
-                        <div id="clarify">
-                            <input onChange={(e) => this.routeHandler(e)}></input>
-                            {this.ModalExampleShorthand()}<br></br><br></br>
-                            <center>
-                                <h1>Have you seen your Destination??</h1>
-                                <button onClick={(e) => this.destinationHandler(e)}>Yes</button>
-                                <button onClick={(e) => this.DestinationShift(e)}>No</button>
-                            </center>
+                        <div id="flex-container">
+                            <div id="tablewrap">
+                                <center>
+                                    <h1 id="display">{this.state.jeepneys}</h1>
+                                </center>
+                            </div>
+                            <div id="clarify">
+                                <input onChange={(e) => this.routeHandler(e)}></input>
+                                <center>{this.ModalExampleShorthand()}<br></br><br></br></center>                                
+                                <center>
+                                    <h1>Have you seen your Destination??</h1>
+                                    <button onClick={(e) => this.destinationHandler(e)}>Yes</button>
+                                    <button onClick={(e) => this.DestinationShift(e)}>No</button>
+                                </center>
+                            </div>
                         </div>
                     </div>
                 )

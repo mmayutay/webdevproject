@@ -1,21 +1,21 @@
 
 #tablewrap {
-    background-color: grey;
+    background: rgba(61, 61, 61, 0.4);
     width: 530px;
-    height: 200px;
+    height: 309px;
     float: right;
-    margin-right: 50px;
-    border-radius: 25px;
 }
 
 #locationAsk {
-    background-color: blueviolet;
+    background: rgba(165, 165, 165, 0.4);
     float: left;
     width: 662px;
-    height: 310px;
+    height: 350px;
     text-align: center;
-    margin-left: 50px;
-    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    
 }
 #locator {
     margin-top: 38px;
@@ -37,7 +37,7 @@ input:focus {
     margin-top: 38px;
 }
 #tripGuideAsk {
-    background-color: blueviolet;
+    background: rgba(100, 100, 100, 0.4);
     float: left;
     width: 662px;
     height: 280px;
@@ -46,22 +46,22 @@ input:focus {
 }
 
 #nickname {
-    height: 390px;
-    background-color: dimgray;
-    border-radius: 25px;
+    height: 466px;
+    background: rgba(165, 165, 165, 0.4);
 }
 
 #clarify {
-    border-radius: 25px;
     float: right;
-    background-color: gray;
-    margin-right: 50px;
+    background: rgba(61, 61, 61, 0.4);
     width: 530px;
 }
 
 h1 {
     font-size: 40px;
     font-family: cursive;
+}
+h2 {
+    font-size: 30px;
 }
 button {
     background-color: #4CAF50; /* Green */
@@ -76,6 +76,7 @@ button {
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 15px;
+    width: 100px;
   }
 button {
     background-color: white; 
@@ -86,4 +87,11 @@ button:hover {
     background-color: #4CAF50;
     color: white;
   }
+b {
+    color: black;
+}
 
+#flex-container {
+    display: flex;
+    flex-direction: column;
+}
