@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './ShowTables.css'
 import { Button, Modal } from 'semantic-ui-react';
-import Destination from './Destination';
 import DestinationDash from './DestinationDash';
 import { Dropdown } from 'semantic-ui-react'
+import ThankYou from './ThankYou';
 
 
 class SimpleDashBoard extends Component {
@@ -60,7 +60,7 @@ class SimpleDashBoard extends Component {
             return (
                 <Modal
                     trigger={<Button>Done</Button>}
-                    header={this.state.setUpRoute}
+                    header={"This Jeepney will pass on this places!, kindly check if the place you want to go are in the LIST below!"}
                     content={this.state.placesFrom.map((values) => <li>{values}</li>)}
                     actions={[{ key: 'done', content: 'Done', positive: true }]}
                 />
@@ -136,7 +136,7 @@ class SimpleDashBoard extends Component {
                 )
             } else {
                 return (
-                    <Destination name={this.props.name}></Destination>
+                    <ThankYou name={this.props.name}></ThankYou>
                 )
             }
         } else {

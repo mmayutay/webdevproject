@@ -129,7 +129,7 @@ class DestinationDash extends Component {
             )
         } else {
             return (
-                <Destination name={this.props.name} places={this.state.places} placesFrom={this.props.placesFrom}></Destination>
+                <Destination name={this.props.name} places={this.state.places} placesFrom={this.props.placesFrom} location={this.state.location}></Destination>
             )
         }
     }
