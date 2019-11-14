@@ -15,7 +15,7 @@ class DestinationDash extends Component {
             routes: ["04C", "04I", "04H", "17C", "17B", "17D"],
             jeepneys: "",
             setUpRoute: "",
-            places: ['Apas', 'IT Park', 'Salinas Drive', 'University Of The Southern Philippines Foundation (Lahug)', 'JY Square Mall', 'Gorordo Ave.', 'Lahug High School', 'University Of The Philippines', 'Golden Peak Hotel', 'Philhealth', 'Royal Concourse', 'Asilo Dela Milagrosa', 'Gen. Maxilom Ave.', 'Mango Ave.', 'Fooda Saversmart', 'Horizons 101', 'Mango Square', 'The Beat', 'Robinsons Fuente', 'F. Ramos St.', 'Junquera St.', 'University Of San Carlos Main', 'Sanciangko St.', 'University Of Cebu Main', 'GV Tower', 'E Mall', 'Panganiban St.', 'Magallanes St.', 'University Of San Jose-Recoletos', 'Carbon Public Market', 'F. Calderon St.', 'Progresso St.'],
+            places: ['Apas', 'IT Park', 'Salinas Drive', 'University Of The Southern Philippines Foundation (Lahug)', 'JY Square Mall', 'Gorordo Ave.', 'Lahug High School', 'University Of The Philippines', 'Golden Peak Hotel', 'Philhealth', 'Royal Concourse', 'Asilo dela Milagrosa', 'Gen. Maxilom Ave.', 'Mango Ave.', 'Fooda Saversmart', 'Horizons 101', 'Mango Square', 'The Beat', 'Robinsons Fuente', 'F. Ramos St.', 'Junquera St.', 'University Of San Carlos Main', 'Sanciangko St.', 'University Of Cebu Main', 'GV Tower', 'E Mall', 'Panganiban St.', 'Magallanes St.', 'University Of San Jose-Recoletos', 'Carbon Public Market', 'F. Calderon St.', 'Progresso St.'],
             countryOptions: [
                 { key: 'af', value: 'af', text: 'Apas' },
                 { key: 'ax', value: 'ax', text: 'Bacayan' },
@@ -84,17 +84,18 @@ class DestinationDash extends Component {
     }
 
     exposedCampaignOnChange = (e, { value }) => {
-        e.persist();
+        e.persist = () => {};
         console.log(e.target.textContent);
         this.setState({ location: e.target.textContent })
     }
 
     DropdownExampleClearableMultiple = () => (
         <Dropdown
+            search
             clearable
             selection
             options={this.state.countryOptions}
-            placeholder='Location'
+            placeholder='Destination'
             onChange={this.exposedCampaignOnChange}
         />
     )
@@ -105,8 +106,7 @@ class DestinationDash extends Component {
                 <div>
                     <div id="locationAsk">
                         <h1 id="locator">Hello! <b>{this.props.name}</b>, Can you please enter your Destination?<b>(Barangay)</b></h1><br />
-                        {this.DropdownExampleClearableMultiple()}<br></br>
-                        {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
+                        <div>{this.DropdownExampleClearableMultiple()}<br></br></div>
                         <button onClick={(e) => this.diplayValues(e)}>Click</button>
                     </div>
                     <div id="flex-container">
@@ -129,7 +129,7 @@ class DestinationDash extends Component {
             )
         } else {
             return (
-                <Destination name={this.props.name}></Destination>
+                <Destination name={this.props.name} places={this.state.places} placesFrom={this.props.placesFrom}></Destination>
             )
         }
     }

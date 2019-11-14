@@ -4,7 +4,6 @@ import { Button, Modal } from 'semantic-ui-react';
 import Destination from './Destination';
 import DestinationDash from './DestinationDash';
 import { Dropdown } from 'semantic-ui-react'
-import swal from 'sweetalert';
 
 
 class SimpleDashBoard extends Component {
@@ -18,7 +17,7 @@ class SimpleDashBoard extends Component {
             routes: ["13C", "62C", "13B", "62B"],
             jeepneys: "",
             setUpRoute: "",
-            places: ['Talamban', 'Gov. M. Cuenco Ave.', 'Gaisano Grand Mall (talamban)', 'University of San Carlos (talamban)', 'Banilad', 'Banilad Town Center', 'Gaisano Country Mall', 'University of Cebu (Banilad)', 'Paradise Village', 'Cebu Country Club', 'Samantabhadra Institute', 'Arch. Reyes Ave.', 'BIR', 'Cebu Business Park', 'Pag-ibig Fund', 'Ayala Center Cebu', 'Mindanao Ave.', 'Samar Loop', 'Luzon Ave.', 'Tune Hotels', 'Arch. Reyes Ave.', 'Hotel Elizabeth', 'Gorordo Ave.', 'Asilo dela Melagrosa', 'Camp Sutero (Cebu City Police office)', 'Gen. Echavez St.', 'Sikatuna St.', 'Parian', 'Colon St.', 'Gaisano Main', 'University of the Visayas', 'Colonnade Supermarket.'],
+            placesFrom: ['Talamban', 'Gov. M. Cuenco Ave.', 'Gaisano Grand Mall (talamban)', 'University of San Carlos (talamban)', 'Banilad', 'Banilad Town Center', 'Gaisano Country Mall', 'University of Cebu (Banilad)', 'Paradise Village', 'Cebu Country Club', 'Samantabhadra Institute', 'Arch. Reyes Ave.', 'BIR', 'Cebu Business Park', 'Pag-ibig Fund', 'Ayala Center Cebu', 'Mindanao Ave.', 'Samar Loop', 'Luzon Ave.', 'Tune Hotels', 'Arch. Reyes Ave.', 'Hotel Elizabeth', 'Gorordo Ave.', 'Asilo dela Milagrosa', 'Camp Sutero (Cebu City Police office)', 'Gen. Echavez St.', 'Sikatuna St.', 'Parian', 'Colon St.', 'Gaisano Main', 'University of the Visayas', 'Colonnade Supermarket.'],
             countryOptions: [
                 { key: 'af', value: 'af', text: 'Apas' },
                 { key: 'ax', value: 'ax', text: 'Bacayan' },
@@ -62,7 +61,7 @@ class SimpleDashBoard extends Component {
                 <Modal
                     trigger={<Button>Done</Button>}
                     header={this.state.setUpRoute}
-                    content={this.state.places.map((values) => <li>{values}</li>)}
+                    content={this.state.placesFrom.map((values) => <li>{values}</li>)}
                     actions={[{ key: 'done', content: 'Done', positive: true }]}
                 />
             )
@@ -92,12 +91,13 @@ class SimpleDashBoard extends Component {
         this.setState({ changeDes: true })
     }
     exposedCampaignOnChange = (e, { value }) => {
-        e.persist();
+        e.persist = () => {};
         this.setState({ location: e.target.textContent })
     }
 
     DropdownExampleClearableMultiple = () => (
         <Dropdown
+            search
             clearable
             selection
             options={this.state.countryOptions}
@@ -113,8 +113,7 @@ class SimpleDashBoard extends Component {
                     <div>
                         <div id="locationAsk">
                             <h1 id="locator">Hello! <b>{this.props.name}</b>, Can you please enter your Location?<b>(Barangay)</b></h1><br />
-                            {this.DropdownExampleClearableMultiple()}<br></br>
-                            {/* <input name="search" onChange={(e) => this.locationHandler(e)}></input><br /><br></br> */}
+                            <div id="editor">{this.DropdownExampleClearableMultiple()}<br></br></div>
                             <button onClick={(e) => this.diplayValues(e)}>Click</button>
                         </div>
                         <div id="flex-container">
@@ -142,7 +141,7 @@ class SimpleDashBoard extends Component {
             }
         } else {
             return (
-                <DestinationDash name={this.props.name}></DestinationDash>
+                <DestinationDash name={this.props.name} placesFrom={this.state.placesFrom}></DestinationDash>
             )
         }
     }

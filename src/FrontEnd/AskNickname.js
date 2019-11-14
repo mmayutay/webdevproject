@@ -32,7 +32,7 @@ class AskNickname extends Component{
             return(
                 <center id="nickname">
                     <br/><br/><br/>
-                    <img src={jeepMe}></img>
+                    <img src={jeepMe} alt="Guide To The Better Trip!"></img>
                     <h2>Hello Mate!, May I ask your Nickname?</h2>
                     <input placeholder="Enter your nickname" onChange={(e) => this.nickname(e)}></input>
                     <br></br>
