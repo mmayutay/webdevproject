@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import SimpleDashBoard from './SimpleDashBoard';
 import swal from 'sweetalert';
 import jeepMe from './jeepMe.png';
+import Action from './Action';
 
 
 class AskNickname extends Component{
@@ -41,7 +41,7 @@ class AskNickname extends Component{
             )
         }else{
             return(
-                <SimpleDashBoard name={this.state.nickname}></SimpleDashBoard>
+                <Action name={this.state.nickname}/>
             )
         }
 

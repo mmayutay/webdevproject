@@ -1,26 +1,3 @@
-
-#tablewrap {
-    background: rgba(61, 61, 61, 0.4);
-    width: 530px;
-    height: 309px;
-    float: right;
-}
-
-#locationAsk {
-    background: rgba(165, 165, 165, 0.4);
-    float: left;
-    width: 662px;
-    height: 350px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-right: 50px;
-    
-}
-#locator {
-    margin-top: 38px;
-}
-
 input {
     width: 400px;
     padding: 12px 20px;
@@ -33,28 +10,11 @@ input:focus {
     background-color: lightblue;
 }
 
-#tripGuide {
-    margin-top: 38px;
-}
-#tripGuideAsk {
-    background: rgba(100, 100, 100, 0.4);
-    float: left;
-    width: 662px;
-    height: 280px;
-    text-align: center;
-    margin-left: 25px;
-}
-
 #nickname {
     height: auto;
     background: rgba(165, 165, 165, 0.4);
 }
 
-#clarify {
-    float: right;
-    background: rgba(61, 61, 61, 0.4);
-    width: 530px;
-}
 
 h1 {
     font-size: 40px;
@@ -92,7 +52,19 @@ b {
     color: black;
 }
 
-#flex-container {
-    display: flex;
-    flex-direction: column;
+#chose {
+    width: 370px;
+    height: 340px;
+    background-color: #555;
+    padding-top: 30px;
+    float: left;
+}
+
+#display {
+    margin-left: 40px;
+    width: 370px;
+    height: 340px;
+    background-color: #555;
+    padding-top: 30px;
+    float: left;
 }
