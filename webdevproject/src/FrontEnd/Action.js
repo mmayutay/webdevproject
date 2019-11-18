@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Dropdown } from 'semantic-ui-react'
 import './ShowTables.css'
+import axios from 'axios';
 
 class Action extends Component {
     constructor(props){
@@ -72,9 +73,16 @@ class Action extends Component {
 
     onclickHandler(e){
         e.preventDefault();
-        fetch("/api/greeting")
-        .then(response => response.json())
-        .then(state => this.setState({greeting: state.greeting}))
+        axios.post('http://localhost:3001/api/greeting', {
+            located: this.state.location,
+            destined: this.state.destination
+          })
+          .then((response) => {
+              this.setState({greeting: response.data})
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     }
 
     render(){
