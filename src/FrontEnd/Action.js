@@ -78,11 +78,15 @@ class Action extends Component {
             destined: this.state.destination
           })
           .then((response) => {
-              this.setState({greeting: response.data})
+              console.log(response)
+            //   this.setState({greeting: response})
           })
           .catch((error) => {
             console.log(error);
           });
+    }
+    onclickSample(e) {
+        console.log(this.state.greeting)
     }
 
     render(){
@@ -92,6 +96,7 @@ class Action extends Component {
                     <div id="editor">{this.DropdownExampleClearableMultiple()}</div><br></br>
                     <div id="editor">{this.DestinationChoose()}<br></br></div><br/>
                     <button onClick={(e) => this.onclickHandler(e)}>Search</button>
+                    <button onClick={(e) => this.onclickSample(e)}>Try</button>
                 </div>
                 <div id="display">
                     <h1>{this.state.greeting}</h1>

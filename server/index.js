@@ -2,6 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const cors = require("cors");
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+//Connection to URL
+const url = 'mongodb://localhost:27017';
+
+//DB name
+const dbName = "webdev_project";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,20 +25,31 @@ let array = [
 
 //Makita nimo sa ubos ang sample nga api, if naa kay mga question, don't hesitate to approach me, para ma explain
 //pa nako kung unsa jud atoang buhaton!!, Thank You and more power...
-
 var locationHandler = ""
+var tempLook = ""
 var destinationHandler = ""
 
+
+MongoClient.connect(url, function(err, client){
+  assert.equal(null, err);
+  console.log("connected to db");
+
+  const db = client.db(dbName);
+  db.collection('places').find({"location": "Apas"}).toArray(function(err, result){
+    if(err) throw err;
+    tempLook = result;
+    console.log('working');
+    
+  }) 
+
+  client.close();
+})
+
+
 app.post('/api/greeting', (req, res) => {
-  destinationHandler = req.body.destined
-  array.forEach(element => {
-    if(element.location == req.body.located){
-      locationHandler = element.location + " and the routes are " + element.routes;
-    }if(element.location == req.body.destined){
-      destinationHandler = element.location + " and the routes are " + element.routes;
-    }
-  });
-  res.send(locationHandler)
+  locationHandler = req.body.located;
+  console.log(tempLook);
+  res.send(tempLook);
 });
 
 app.listen(3001, () =>
