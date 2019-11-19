@@ -53,8 +53,8 @@ b {
 }
 
 #chose {
-    width: 370px;
-    height: 340px;
+    width: 420px;
+    height: 430px;
     background-color: #555;
     padding-top: 30px;
     float: left;
@@ -62,8 +62,8 @@ b {
 
 #display {
     margin-left: 40px;
-    width: 370px;
-    height: 340px;
+    width: 420px;
+    height: 430px;
     background-color: #555;
     padding-top: 30px;
     float: left;

@@ -94,7 +94,7 @@ class Action extends Component {
                     <button onClick={(e) => this.onclickHandler(e)}>Search</button>
                 </div>
                 <div id="display">
-                    {this.state.greeting}
+                    <h1>{this.state.greeting}</h1>
                 </div>
             </div>
         )
