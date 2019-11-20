@@ -13,28 +13,19 @@ class Action extends Component {
             destination: "",
             countryOptions: [
                 { key: 'af', value: 'af', text: 'Apas' },
-                { key: 'ax', value: 'ax', text: 'Bacayan' },
-                { key: 'al', value: 'al', text: 'Banilad' },
+                { key: 'ax', value: 'ax', text: 'Ayala' },
+                { key: 'al', value: 'al', text: 'Banawa' },
                 { key: 'dz', value: 'dz', text: 'Basak Pardo' },
-                { key: 'as', value: 'as', text: 'Basak San Nicolas' },
-                { key: 'ad', value: 'ad', text: 'Bonbon' },
-                { key: 'ao', value: 'ao', text: 'Buhisan' },
-                { key: 'ai', value: 'ai', text: 'Bulacao' },
-                { key: 'ag', value: 'ag', text: 'Busay' },
-                { key: 'ar', value: 'ar', text: 'Calamba' },
-                { key: 'am', value: 'am', text: 'Capitol Site' },
-                { key: 'aw', value: 'aw', text: 'Carreta' },
-                { key: 'au', value: 'au', text: 'Cogon Ramos' },
-                { key: 'at', value: 'at', text: 'Cogon Pardo' },
-                { key: 'az', value: 'az', text: 'Day‑as' },
-                { key: 'bs', value: 'bs', text: 'Duljo Fatima' },
-                { key: 'bh', value: 'bh', text: 'Ermita' },
-                { key: 'bd', value: 'bd', text: 'Guadalupe' },
-                { key: 'bb', value: 'bb', text: 'Labangon' },
-                { key: 'by', value: 'by', text: 'Lahug' },
-                { key: 'be', value: 'be', text: 'Pit-os' },
-                { key: 'bz', value: 'bz', text: 'Talamban' },
-                { key: 'bj', value: 'bj', text: 'Tisa' },
+                { key: 'as', value: 'as', text: 'Bulacao' },
+                { key: 'ad', value: 'ad', text: 'Colon' },
+                { key: 'ao', value: 'ao', text: 'Carbon' },
+                { key: 'ai', value: 'ai', text: 'Guadalupe' },
+                { key: 'ag', value: 'ag', text: 'Lahug' },
+                { key: 'ar', value: 'ar', text: 'Labangon' },
+                { key: 'am', value: 'am', text: 'Inayawan' },
+                { key: 'aw', value: 'aw', text: 'Pier' },
+                { key: 'au', value: 'au', text: 'Talamban' },
+                { key: 'at', value: 'at', text: 'Pit-os' }
             ]
 
         }
@@ -78,8 +69,8 @@ class Action extends Component {
             destined: this.state.destination
           })
           .then((response) => {
-              console.log(response)
-            //   this.setState({greeting: response})
+              console.log(response.data)
+              this.setState({greeting: response.data})
           })
           .catch((error) => {
             console.log(error);
@@ -91,12 +82,11 @@ class Action extends Component {
 
     render(){
         return(
-            <div>
+            <div id="flex">
                 <div id="chose">
                     <div id="editor">{this.DropdownExampleClearableMultiple()}</div><br></br>
                     <div id="editor">{this.DestinationChoose()}<br></br></div><br/>
-                    <button onClick={(e) => this.onclickHandler(e)}>Search</button>
-                    <button onClick={(e) => this.onclickSample(e)}>Try</button>
+                    <center><button onClick={(e) => this.onclickHandler(e)}>Review</button></center>
                 </div>
                 <div id="display">
                     <h1>{this.state.greeting}</h1>
