@@ -53,18 +53,24 @@ b {
 }
 
 #chose {
-    width: 370px;
-    height: 340px;
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    height: 430px;
     background-color: #555;
     padding-top: 30px;
     float: left;
 }
 
 #display {
-    margin-left: 40px;
-    width: 370px;
-    height: 340px;
+    margin-left: 10px;
+    width: 420px;
+    height: 430px;
     background-color: #555;
     padding-top: 30px;
     float: left;
+}
+#flex {
+    display: flex;
+    flex-wrap: wrap;
 }
