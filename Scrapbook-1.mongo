@@ -1,5 +1,1 @@
-db.jeepneyPass.insert({
-    "jeepneyRoute": "62B", 
-    "passes": 
-    ['Pit-os', 'Bacayan', 'Talamban', 'Gov. M. Cuenco Gaisano Talamban', 'The Family Park', 'University of San Carlos (Talamban campus)', 'Gaisano Country Mall', 'UC-Banilad', 'Banilad', 'Pope John Paul 2 Ave.', 'Cebu Business Park', 'Ayala Center Cebu', 'Marriot Hotel', 'Samar Loop', 'Luzon Ave.', 'Arch. Reyes Ave.', 'Gorordo Ave.', 'Asilo dela Milagrosa', 'Gen. Echavez St.', 'Sikatuna St.', 'Zapatera', 'colon Obelisk', 'V. Gullas St.', 'Manalili St.', 'Carbon Public Market', 'Progreso St.', 'Carbon Public Market', 'MC. Briones St.', 'D. Jakosalem St.', 'Cebu City Hall', 'Basilica Del Sto. Niño', 'The Freeman', 'Gaisano main', 'University of the Visayas', 'Imus Ave.']
-})
+db.admin.find({})

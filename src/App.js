@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import AskNickname from './FrontEnd/AskNickname';
+// import AskNickname from './FrontEnd/AskNickname';
+import AdminSignUp from './admin/AdminSignUp';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <AskNickname/>
+          <AdminSignUp/>
       </header>
     </div>
   );

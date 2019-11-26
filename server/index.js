@@ -24,7 +24,7 @@ app.use(cors())
 var data = '';
 var db = "";
   // Database content
-  MongoClient.connect(url, function (err, client) {
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
     assert.equal(null, err);
     db = client.db(dbName);
 
@@ -41,9 +41,14 @@ app.post('/api/greeting', (req, res) => {
       console.log(result[0].location)
       data += " " + result[0].location;
     })
+
+    db.collection().
     res.send(data)
     data = ""
 });
+
+
+
 
 app.listen(3001, () =>
   console.log('Express server is running on localhost: 3001')
