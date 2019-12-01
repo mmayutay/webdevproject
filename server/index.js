@@ -18,37 +18,85 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(pino);
 app.use(cors())
+//aklsdjjfasdcvoaskdfkasdf;asd;fasdfasdf
+//fasdokjflkasdmflasdfasdfasdfasdfsdafas
+var userLocation = [];
+var userDestination = [];
+var List = []
+// Database connect
+MongoClient.connect(url, {
+  useUnifiedTopology: true
+}, function (err, client) {
+  assert.equal(null, err);
+  db = client.db(dbName);
 
-//Makita nimo sa ubos ang sample nga api, if naa kay mga question, don't hesitate to approach me, para ma explain
-//pa nako kung unsa jud atoang buhaton!!, Thank You and more power...
-var data = '';
-var db = "";
-  // Database content
-  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
-    assert.equal(null, err);
-    db = client.db(dbName);
+})
 
-  })
-
+// Sending the requested values
+var locationRoutes =  []
+var destinationRoutes = []
 app.post('/api/greeting', (req, res) => {
-    db.collection('places').find({"location": req.body.located}).toArray((err, result) => {
-      if (err) throw err;
-      console.log(result[0].location)
-      data += result[0].location          
+  if(req.body.located === req.body.destined){
+    res.send("Since your location is the same, just ride any jeep that passes on your location so that you will still reach your destination!")
+  }else{
+  db.collection('places').find({
+    "location": req.body.located
+  }).toArray((err, result) => {
+    if (err) throw err;
+    result[0].routes.forEach(element => {
+      locationRoutes.push(element)
+      db.collection('jeepneyPass').find({
+        "jeepneyRoute": element
+      }).toArray((error, passes) => {
+        if (error) throw error;
+        if (passes.length != 0) {
+          userLocation.push(passes[0].passes)
+        }
+      })
+    });
+  })
+  db.collection('places').find({
+    "location": req.body.destined
+  }).toArray((err, result) => {
+    if (err) throw err;
+    result[0].routes.forEach(element => {
+      destinationRoutes.push(element)
+      db.collection('jeepneyPass').find({
+        "jeepneyRoute": element
+      }).toArray((error, passes) => {
+        if (error) throw error;
+        if (passes.length != 0) {
+          userDestination.push(passes[0].passes)
+        }
+      })
+    });
+  })
+  userLocation.forEach(loc => {
+    userDestination.forEach(des => {
+      loc.forEach(pass => {
+        des.forEach(ses => {
+          if (pass == ses) {
+            if (!List.includes(pass)) {
+              List.push(pass)
+            }
+          }
+        })
+      })
     })
-    db.collection('places').find({"location": req.body.destined}).toArray((err, result) => {
-      if (err) throw err;
-      console.log(result[0].location)
-      data += " " + result[0].location;
-    })
-
-    db.collection().
-    res.send(data)
-    data = ""
+  })
+  res.send({"destinationRoutes":destinationRoutes, "value":List, "locationRoutes": locationRoutes});
+  List.length = 0
+  destinationRoutes.length = 0
+  locationRoutes.length = 0
+  }
 });
 
-
-
+// show all the routes from the database
+app.get('/api/requestroute', (req, res) => {
+  db.collection('places').find({}, {"location": 1, "_id": 0}).toArray((err, result)   => {
+    res.send(result)
+  })
+})  
 
 app.listen(3001, () =>
   console.log('Express server is running on localhost: 3001')

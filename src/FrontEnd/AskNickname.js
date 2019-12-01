@@ -27,7 +27,6 @@ class AskNickname extends Component{
     }
 
     render(){
-
         if(this.state.state === false){
             return(
                 <center id="nickname">
