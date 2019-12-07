@@ -22,12 +22,17 @@ app.use(cors())
 //fasdokjflkasdmflasdfasdfasdfasdfsdafas
 var userLocation = [];
 var userDestination = [];
+<<<<<<< HEAD
+=======
+var List = []
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
 // Database connect
 MongoClient.connect(url, {
   useUnifiedTopology: true
 }, function (err, client) {
   assert.equal(null, err);
   db = client.db(dbName);
+<<<<<<< HEAD
 
 })
 
@@ -38,8 +43,16 @@ var locationRoutes = []
 var destinationRoutes = []
 
 
+=======
 
+})
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
+
+// Sending the requested values
+var locationRoutes =  []
+var destinationRoutes = []
 app.post('/api/greeting', (req, res) => {
+<<<<<<< HEAD
   reqUserLocation = req.body.located
   reqUserDestination = req.body.destined
   if (req.body.located === req.body.destined) {
@@ -102,11 +115,66 @@ app.post('/api/greeting', (req, res) => {
       userDestination = []
       userLocation = []
     }
+=======
+  if(req.body.located === req.body.destined){
+    res.send("Since your location is the same, just ride any jeep that passes on your location so that you will still reach your destination!")
+  }else{
+  db.collection('places').find({
+    "location": req.body.located
+  }).toArray((err, result) => {
+    if (err) throw err;
+    result[0].routes.forEach(element => {
+      locationRoutes.push(element)
+      db.collection('jeepneyPass').find({
+        "jeepneyRoute": element
+      }).toArray((error, passes) => {
+        if (error) throw error;
+        if (passes.length != 0) {
+          userLocation.push(passes[0].passes)
+        }
+      })
+    });
+  })
+  db.collection('places').find({
+    "location": req.body.destined
+  }).toArray((err, result) => {
+    if (err) throw err;
+    result[0].routes.forEach(element => {
+      destinationRoutes.push(element)
+      db.collection('jeepneyPass').find({
+        "jeepneyRoute": element
+      }).toArray((error, passes) => {
+        if (error) throw error;
+        if (passes.length != 0) {
+          userDestination.push(passes[0].passes)
+        }
+      })
+    });
+  })
+  userLocation.forEach(loc => {
+    userDestination.forEach(des => {
+      loc.forEach(pass => {
+        des.forEach(ses => {
+          if (pass == ses) {
+            if (!List.includes(pass)) {
+              List.push(pass)
+            }
+          }
+        })
+      })
+    })
+  })
+  res.send({"destinationRoutes":destinationRoutes, "value":List, "locationRoutes": locationRoutes});
+  List.length = 0
+  destinationRoutes.length = 0
+  locationRoutes.length = 0
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
   }
 });
 
 // show all the routes from the database
 app.get('/api/requestroute', (req, res) => {
+<<<<<<< HEAD
   db.collection('location').find({}, { "location": 1 }).toArray((err, result) => {
     res.send(result)
   })
@@ -119,6 +187,12 @@ app.post('/jeepme/login', (req, res) => {
   })
   
 })
+=======
+  db.collection('places').find({}, {"location": 1, "_id": 0}).toArray((err, result)   => {
+    res.send(result)
+  })
+})  
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
 
 app.listen(3001, () =>
   console.log('Express server is running on localhost: 3001')

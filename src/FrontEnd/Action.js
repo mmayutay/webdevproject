@@ -3,9 +3,14 @@ import { Dropdown } from 'semantic-ui-react'
 import './ShowTables.css'
 import axios from 'axios';
 import swal from 'sweetalert';
+<<<<<<< HEAD
 import { Modal } from 'semantic-ui-react';
 import home from './home.png'
 import { Redirect } from 'react-router-dom'
+=======
+import home from "./home.png";
+import AskNickname from './AskNickname';
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
 
 class Action extends Component {
     constructor(props) {
@@ -22,6 +27,7 @@ class Action extends Component {
             home: false
         }
     }
+<<<<<<< HEAD
     componentDidMount() {
         let list = []
         axios.get('http://localhost:3001/api/requestroute').then(response => {
@@ -30,6 +36,16 @@ class Action extends Component {
             });
         })
         this.setState({ countryOptions: list })
+=======
+    componentDidMount(){
+        let list = []
+        axios.get('http://localhost:3001/api/requestroute').then(response =>{
+            response.data.forEach(element => {
+                list.push({"key": element.location, "value": element.location, "text": element.location})
+            });
+        })
+        this.setState({countryOptions: list})
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
     }
 
     exposedCampaignOnChange = (e, { value }) => {
@@ -69,6 +85,7 @@ class Action extends Component {
         axios.post('http://localhost:3001/api/greeting', {
             located: this.state.location,
             destined: this.state.destination
+<<<<<<< HEAD
         })
             .then((response) => {
                 if (typeof response.data === 'string') {
@@ -134,6 +151,54 @@ class Action extends Component {
             )
         }
     }
+=======
+          })
+          .then((response) => {
+              if(typeof response.data === 'string'){
+                swal(response.data)
+            }if(response.data.value.length === 0){
+                swal(this.state.location+" is your location and your destination is " + this.state.destination + ", click again!")
+            }else{
+                console.log(response.data.destinationRoutes)
+                this.setState({toRideLocation: response.data.locationRoutes})
+                this.setState({toRideDestination: response.data.destinationRoutes})
+                this.setState({greeting: "If you want to go to "+ this.state.location.toUpperCase()+", you may ride "
+                +this.state.toRideLocation+" and you may get off at "+response.data.value + " and look for " + this.state.toRideDestination+
+            " to reach " + this.state.destination.toUpperCase()})
+              }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+
+    onclickHome(e){
+        this.setState({home: true})
+    }
+
+    render(){
+        if(this.state.home === false){
+            return(
+                <div id="flex">
+                    <div id="chose">
+                        <h1>Hello {this.props.name}, I hope that it will help you to go to your Destination!</h1>
+                        <div id="editor">{this.DropdownExampleClearableMultiple()}</div><br></br>
+                        <div id="editor">{this.DestinationChoose()}<br></br></div><br/>
+                        <center><button onClick={(e) => this.onclickHandler(e)}>Review</button></center>
+                    </div>
+                    <div id="display">
+                        <img  id="home" onClick={(e) => this.onclickHome(e)} src={home} alt="home"></img>
+                        <h1 id="mess">{this.state.greeting}</h1>
+                    </div>
+                </div>
+            )
+        }else{
+            return(
+                <AskNickname></AskNickname>
+            )
+        }
+}
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
 }
 
 export default Action;

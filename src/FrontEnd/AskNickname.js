@@ -27,6 +27,7 @@ class AskNickname extends Component {
         }
     }
 
+<<<<<<< HEAD
     onClickSign(e) {
         console.log("Sulod na!")
         this.setState({ signUp: true })
@@ -35,6 +36,11 @@ class AskNickname extends Component {
     render() {
         if (this.state.state === false) {
             return (
+=======
+    render(){
+        if(this.state.state === false){
+            return(
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
                 <center id="nickname">
                     <div id="sign" onClick={(e) => this.onClickSign(e)}><h3>Sign as Admin?</h3></div>
                     <br /><br /><br />

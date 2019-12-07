@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import "./Admin.css";
 import Options from './Options';
 import swal from 'sweetalert'
+<<<<<<< HEAD
 import axios from 'axios';
+=======
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
 
 class Login extends Component  {
     constructor(props){
@@ -15,10 +18,13 @@ class Login extends Component  {
         }
     }
     onclickHandler(e){
+<<<<<<< HEAD
         axios.post('http://localhost:3001/jeepme/login', {
             username: this.state.username, 
             password: this.state.password
         })
+=======
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
         swal(this.state.username + " is your name and your password is " + this.state.password)
         this.setState({situation: true})
     }

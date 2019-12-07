@@ -58,8 +58,13 @@ b {
 #chose {
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     width: auto;
     height: auto;
+=======
+    width: 420px;
+    height: 430px;
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
     background-color: rgba(165, 165, 165, 0.4);
     padding-top: 30px;
     float: left;
@@ -80,7 +85,11 @@ b {
 }
 #mess {
     color: black;
+<<<<<<< HEAD
     font-size: 30px;
+=======
+    font-size: 20px;
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
 }
 
 #loc {
@@ -89,6 +98,7 @@ b {
 #home {
     float: right;
     width: 100px;
+<<<<<<< HEAD
 }
 h3 {
     color: red;
@@ -96,3 +106,6 @@ h3 {
 #sign {
     float: right;
 }
+=======
+}
+>>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7

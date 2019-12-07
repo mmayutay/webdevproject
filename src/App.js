@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+// import Login from './AdminLog/Login';
 import AskNickname from './FrontEnd/AskNickname';
 
 function App() {
