@@ -1,37 +1,45 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import swal from 'sweetalert';
 import jeepMe from './jeepMe.png';
-import Action from './Action';
+import { Redirect } from 'react-router-dom'
+import Auth from './Auth';
 
 
-class AskNickname extends Component{
-    constructor(props){
+class AskNickname extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             nickname: "",
-            state: false
+            state: false,
+            signUp: false,
+            authenticated: Auth.getAuth()
         }
     }
 
-    nickname(e){
-        this.setState({nickname: e.target.value})
+    nickname(e) {
+        this.setState({ nickname: e.target.value })
     }
 
-    situationHandler(e){
-        if(this.state.nickname === ""){
-            this.setState({state: false})
+    situationHandler(e) {
+        if (this.state.nickname === "") {
+            this.setState({ state: false })
             swal("Awww Snap!", "The Nickname is required!", "error");
-        }else{
-            this.setState({state: true})
+        } else {
+            this.setState({ state: true, authenticated: true })
         }
     }
 
-    render(){
+    onClickSign(e) {
+        console.log("Sulod na!")
+        this.setState({ signUp: true })
+    }
 
-        if(this.state.state === false){
-            return(
+    render() {
+        if (this.state.state === false) {
+            return (
                 <center id="nickname">
-                    <br/><br/><br/>
+                    <div id="sign" onClick={(e) => this.onClickSign(e)}><h3>Sign as Admin?</h3></div>
+                    <br /><br /><br />
                     <img src={jeepMe} alt="Guide To The Better Trip!"></img>
                     <h2>Hello Mate!, May I ask your Nickname?</h2>
                     <input placeholder="Enter your nickname" onChange={(e) => this.nickname(e)}></input>
@@ -39,9 +47,13 @@ class AskNickname extends Component{
                     <button onClick={(e) => this.situationHandler(e)}>Click</button>
                 </center>
             )
-        }else{
-            return(
-                <Action name={this.state.nickname}/>
+        } else {
+            return (
+                <Redirect to={{
+                    pathname: "/home",
+                    nickname: this.state.nickname,
+                    state: this.state.state
+                }} />
             )
         }
 

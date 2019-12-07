@@ -11,14 +11,17 @@ input:focus {
 }
 
 #nickname {
+    width: auto;
     height: auto;
     background: rgba(165, 165, 165, 0.4);
+    border-radius: 8%;
 }
 
 
 h1 {
-    font-size: 40px;
+    font-size: 20px;
     font-family: cursive;
+    margin: 20px;
 }
 h2 {
     font-size: 30px;
@@ -55,22 +58,41 @@ b {
 #chose {
     display: flex;
     flex-direction: column;
-    width: 420px;
-    height: 430px;
-    background-color: #555;
+    width: auto;
+    height: auto;
+    background-color: rgba(165, 165, 165, 0.4);
     padding-top: 30px;
     float: left;
+    border-radius: 8%;
 }
 
 #display {
     margin-left: 10px;
     width: 420px;
     height: 430px;
-    background-color: #555;
-    padding-top: 30px;
+    background-color: rgba(165, 165, 165, 0.4);
     float: left;
 }
 #flex {
     display: flex;
+    height: 100%;
     flex-wrap: wrap;
+}
+#mess {
+    color: black;
+    font-size: 30px;
+}
+
+#loc {
+    color: white;
+}
+#home {
+    float: right;
+    width: 100px;
+}
+h3 {
+    color: red;
+}
+#sign {
+    float: right;
 }

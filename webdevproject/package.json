@@ -9,6 +9,8 @@
     "react": "^16.10.2",
     "react-bootstrap-sweetalert": "^5.1.6",
     "react-dom": "^16.10.2",
+    "react-loader-spinner": "^3.1.5",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "semantic-ui-react": "^0.88.1",
     "sweetalert": "^2.1.2"
