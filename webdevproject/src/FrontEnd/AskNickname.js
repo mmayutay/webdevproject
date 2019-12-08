@@ -3,6 +3,8 @@ import swal from 'sweetalert';
 import jeepMe from './jeepMe.png';
 import { Redirect } from 'react-router-dom'
 import Auth from './Auth';
+import './ShowTables.css'
+
 
 
 class AskNickname extends Component {
@@ -30,11 +32,17 @@ class AskNickname extends Component {
     }
 
     onClickSign(e) {
-        console.log("Sulod na!")
         this.setState({ signUp: true })
     }
 
     render() {
+        if(this.state.signUp){
+            return(
+                <Redirect to={{
+                    pathname: "/login"
+                }}/>
+            )
+        }
         if (this.state.state === false) {
             return (
                 <center id="nickname">

@@ -1,14 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "./Admin.css";
-import Options from './Options';
-import swal from 'sweetalert'
-<<<<<<< HEAD
+import swal from 'sweetalert';
 import axios from 'axios';
-=======
->>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
+import { Redirect } from 'react-router-dom'
 
-class Login extends Component  {
-    constructor(props){
+
+class Login extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             username: "",
@@ -17,33 +15,71 @@ class Login extends Component  {
 
         }
     }
-    onclickHandler(e){
-<<<<<<< HEAD
-        axios.post('http://localhost:3001/jeepme/login', {
-            username: this.state.username, 
-            password: this.state.password
+
+    
+    loginAuth() {
+        return new Promise((resolve, reject) => {
+            console.log("ing sulod");
+            axios.get('http://localhost:3000/jeepme/admindata/'+ this.state.username + "/"+this.state.password)
+                .then(res => {
+                    console.log(res.data)
+                    resolve(res)
+                })
+                .catch(err => {
+                    reject(err)
+                })
         })
-=======
->>>>>>> 56e10c732e4645beb5e0d4943b6e4dfca613e7b7
-        swal(this.state.username + " is your name and your password is " + this.state.password)
-        this.setState({situation: true})
     }
 
-    render(){
-        if(!this.state.situation){
-            return(
+    onclickHandler(e) {
+        if (this.state.username !== "" && this.state.password !== "") {
+            console.log("edgsd");
+            this.loginAuth().then(res => {
+                if (res.data.data.body.auth) {
+                    console.log(res);
+                    this.setState({ situation: true });
+                    localStorage.setItem("token", res.data.data.body.accessToken)
+                } else {
+                    swal({
+                        icon: "error",
+                        title: "You've entered an invalid credentials!",
+                        text: "Check if you've entered a valid credentials "
+                    })
+                    
+                }
+            })
+        }else{
+            swal({
+                icon: "error", 
+                title: "The input field is Empty",
+                text: "You need to fulfill the input field!"
+            })
+        }
+    }
+
+    handleChange = (e) => {
+        e.preventDefault();
+        this.setState({ username: e.target.value });
+        this.setState({ password: e.target.value });
+              
+        }
+      
+
+    render() {
+        if (!this.state.situation) {
+            return (
                 <center>
-                   <div className="card">
+                    <div className="card">
                         <h1 id="admin">Admin</h1>
-                        <input autoComplete="off" placeholder="Username" type="text" className="w3-input w3-border" id="user" onChange={(e) => this.setState({username: e.target.value})}></input><br></br>
-                        <input placeholder="Password" type="password" className="w3-input w3-border" id="pass" onChange={(e) => this.setState({password: e.target.value})}></input><br></br>
+                        <input autoComplete="off" placeholder="Username" type="text" className="w3-input w3-border" id="user" onChange={(e) => this.handleChange(e)}></input><br></br>
+                        <input placeholder="Password" type="password" className="w3-input w3-border" id="pass" onChange={(e) => this.handleChange(e)}></input><br></br>
                         <button id="button" onClick={(e) => this.onclickHandler(e)}>Login</button>
                     </div>
                 </center>
             )
-        }else{
-            return(
-                <Options></Options>
+        } else {
+            return (
+                <Redirect to="/options"/>
             )
         }
     }

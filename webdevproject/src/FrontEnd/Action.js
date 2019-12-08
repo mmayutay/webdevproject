@@ -71,6 +71,7 @@ class Action extends Component {
             destined: this.state.destination
         })
             .then((response) => {
+                console.log(response)
                 if (typeof response.data === 'string') {
                     swal(response.data)
                     this.setState({greeting: "Click The Review button again!"})
@@ -124,7 +125,7 @@ class Action extends Component {
                             trigger={<center><button onClick={(e) => this.onclickHandler(e)}>Review</button></center>}
                             header={this.state.location + " to " + this.state.destination}
                             content={this.state.greeting}
-                            actions={[{ key: 'done', content: 'Done', positive: true }]}
+                            actions={[{ key: 'done', content: 'Done', positive: true}]}
                         />
                     </div>
                 </div>

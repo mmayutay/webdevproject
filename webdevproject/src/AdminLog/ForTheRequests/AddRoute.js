@@ -1,45 +1,93 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import "../Admin.css";
+import home from './home.png'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 import swal from 'sweetalert'
 
 class AddRoute extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            value: ""
+            city: "",
+            rout: "",
+            place: "",
+            routeStand: "",
+            home: false,
+            inserIntoCollectionRoute: []
         }
     }
-    onclickHandler(e){
-        swal({
-            title: "Enter the route below!",
-            text: "In the field you are going to enter the route # of the jeepney:",
-            content: "input",   
-          }).then((value) => {
-              swal({
-                  title: value,
-                  text: "Enter the places that " + value + " passes in which it is separated by comma!",
-                  content: "input"
-              }).then((passes) => {
-                  if(passes !== null){
-                    let newval = passes.split(", ")
-                    newval.forEach(element => {
-                        console.log(element)
-                    }); 
-                  }
-              })
-          })
-          
+    onclickHandler(e) {
+        e.preventDefault();
+        var add = {
+            route: this.state.rout,
+            places: this.state.place.split(", ")
+        }
+        var placeWithRoute = {
+            location: this.state.city,
+            routes: this.state.rout
+        }
+
+        if (this.state.city !== "" && this.state.rout !== "" && this.state.place !== "") {
+            axios.post('http://localhost:3000/jeepme/createplaces', placeWithRoute)
+                .then((response) => {
+                    console.log(response)
+                }).catch((error) => {
+                    console.log(error)
+                })
+            axios.post('http://localhost:3000/jeepme/createroute', add)
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    return err
+                })
+            swal({
+                icon: "success",
+                title: "Route successfully added",
+                text: "Check the retrieve all to see the values that you've entered!"
+            })
+        } else {
+            swal({
+                icon: "error",
+                text: "Complete all fields!"
+            })
+        }
+
+        this.setState({
+            rout: '',
+            place: ''
+        });
+
     }
-    render(){   
-        return(
-            <center>
-                <div className="AddRoute"> 
-                    <h1>What place? (in barangay)</h1><br></br>
-                    <input autoComplete="off" type="text" className="w3-input w3-border" id="barangay"></input><br></br>
-                    <button id="addButton" onClick={(e) => this.onclickHandler(e)}>Submit</button><br></br>
+
+    onclickTry() {
+        this.setState({ home: true })
+    }
+    render() {
+        if (!this.state.home) {
+            return (
+                <div>
+                    <div>
+                        <img src={home} alt="Smiley face" onClick={(e) => this.onclickTry(e)} />
+                    </div>
+                    <center>
+                        <div className="AddRoute">
+                            <h1>What place?</h1><br></br>
+                            <input autoComplete="off" placeholder="Place" type="text" className="w3-input w3-border" id="barangay" onChange={(e) => this.setState({ city: e.target.value })}></input><br></br>
+                            <input autoComplete="off" placeholder="Route" type="text" className="w3-input w3-border" id="barangay" onChange={(e) => this.setState({ rout: e.target.value })}></input><br></br>
+                            <input autoComplete="off" placeholder="Sub-Places" className="w3-input w3-border" id="barangay" onChange={(e) => this.setState({ place: e.target.value })}></input><br></br>
+
+                            <button id="addButton" onClick={(e) => this.onclickHandler(e)}>Submit</button><br></br>
+                        </div>
+                    </center>
                 </div>
-            </center>
-        )
+            )
+        } else {
+            return (
+                <Redirect to="/options"/>
+            )
+        }
     }
 }
 export default AddRoute;

@@ -55,6 +55,7 @@ button {
     background-color: white; 
     color: black; 
     border: 2px solid #008CBA;
+    margin-bottom: 50px;
   }
   
 button:hover {
@@ -62,6 +63,7 @@ button:hover {
     color: white;
   }
 
+  /* Option.js */
   #simdash {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color:rgba(255,255,255,0.6);
@@ -72,9 +74,7 @@ button:hover {
     padding-top: 80px;
   }
 
-  #button {
-      margin-bottom: 50px;
-  }
+
 
   #chButton {
       margin-bottom: 70px;
@@ -97,4 +97,42 @@ button:hover {
 
   #addButton {
       margin-bottom: 100px;
+  }
+
+  /* DeleteRoute.js */
+  #deleteDiv {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color:rgba(255,255,255,0.6);
+    transition: 0.3s;
+    width: 450px;
+    height: auto;
+    border-radius: 5%;
+    padding-top: 80px;
+  }
+
+  #deleteInput {
+      width: 350px;
+  }
+  img {
+      width: 50px;
+      float: right;
+  }
+
+
+  /* Retrieve all the Data */
+  .table-wrapper {
+    background-color:rgba(255,255,255,0.6);
+  }
+
+  #ListRetrieve {
+      width: 650px;
+      height: 80px;
+  }
+
+  th {
+      color: black;
+  }
+
+  td {
+      color: black
   }

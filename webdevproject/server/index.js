@@ -111,6 +111,9 @@ app.post('/api/greeting', (req, res) => {
 // show all the routes from the database
 app.get('/api/requestroute', (req, res) => {
   db.collection('places').find({}, { location: 1 }).toArray((err, result) => {
+    result.forEach(element => {
+      console.log(element.location)
+    });
     res.send(result)
   })
 })
