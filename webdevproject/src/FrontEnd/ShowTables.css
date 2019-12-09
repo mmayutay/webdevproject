@@ -96,3 +96,9 @@ h3 {
 #sign {
     float: right;
 }
+
+#img{
+    width: 200px;
+    height: 200px;
+    margin-right: 120px;
+}

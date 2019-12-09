@@ -48,8 +48,7 @@ class AskNickname extends Component {
                 <center id="nickname">
                     <div id="sign" onClick={(e) => this.onClickSign(e)}><h3>Sign as Admin?</h3></div>
                     <br /><br /><br />
-                    <img src={jeepMe} alt="Guide To The Better Trip!"></img>
-                    <h2>Hello Mate!, May I ask your Nickname?</h2>
+                    <img id="img" src={jeepMe} alt="Guide To The Better Trip!"></img><br></br><br></br>
                     <input placeholder="Enter your nickname" onChange={(e) => this.nickname(e)}></input>
                     <br></br>
                     <button onClick={(e) => this.situationHandler(e)}>Click</button>
@@ -57,11 +56,14 @@ class AskNickname extends Component {
             )
         } else {
             return (
-                <Redirect to={{
-                    pathname: "/home",
-                    nickname: this.state.nickname,
-                    state: this.state.state
-                }} />
+                <div>
+                    {this.state.authenticated}
+                    <Redirect to={{
+                        pathname: "/home",
+                        nickname: this.state.nickname,
+                        state: this.state.state
+                    }} />
+                </div>
             )
         }
 

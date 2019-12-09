@@ -18,19 +18,9 @@ class Retrieve extends Component {
         this.setState({ home: true })
     }
     componentDidMount() {
-        var jeepR = []
         axios.get('http://localhost:3000/jeepme/retrieveAll')
             .then(response => {
                 this.setState({ret: response.data});
-                var dataT = response.data;
-                var counter = 0;
-                for (counter; counter < dataT.length; counter++) {
-                    jeepR.push({
-                        route: dataT[counter].route,
-                        places: dataT[counter].places,
-
-                    });
-                }
             })
             .catch(error => {
                 console.log(error);
@@ -40,6 +30,7 @@ class Retrieve extends Component {
 
     dataTable() {
         return this.state.ret.map((res, i) => {
+            console.log(res);
             return <List obj={res} key={i} />;
         })
     }

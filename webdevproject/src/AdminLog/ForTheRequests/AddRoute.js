@@ -20,8 +20,8 @@ class AddRoute extends Component {
     onclickHandler(e) {
         e.preventDefault();
         var add = {
-            route: this.state.rout,
-            places: this.state.place.split(", ")
+            jeepneyRoute: this.state.rout,
+            passes: this.state.place.split(", ")
         }
         var placeWithRoute = {
             location: this.state.city,
